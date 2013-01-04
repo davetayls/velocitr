@@ -21,6 +21,14 @@ v.decelerate()
 assert(v.velocity).equals(18);
 ```
 
+### Chaining
+```javascript
+var v = new Velocitr();
+v.move(30, true)
+ .move(60)
+ .decelerate();
+assert(v.velocity).equals(27);
+```
 
 Tests
 -----

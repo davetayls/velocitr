@@ -73,6 +73,13 @@
                         v.move(30);
                         assert(v.velocity).equals(-30);
                     });
+                    it('should be able to chain', function(){
+                        var v = new Velocitr();
+                        v.move(30, true)
+                            .move(60)
+                            .decelerate();
+                        assert(v.velocity).equals(27);
+                    });
 
                 });
 
