@@ -17,7 +17,7 @@ v.move(50);
 assert(v.velocity).equals(20);
 // apply drag
 v.drag = 0.9 // => default
-v.drag()
+v.decelerate()
 assert(v.velocity).equals(18);
 ```
 
