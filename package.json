@@ -1,0 +1,22 @@
+{
+  "name": "Velocitr",
+  "version": "0.0.0",
+  "description": "Velocity manager",
+  "main": "velocitr.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davetayls/velocitr.git"
+  },
+  "keywords": [
+    "velocity",
+    "kinetic"
+  ],
+  "author": "davetayls",
+  "license": "MIT"
+}

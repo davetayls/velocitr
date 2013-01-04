@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Velocitr</title>
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.10.0.css">
+
+        <script src="../velocitr.js" type="text/javascript" charset="utf-8"></script>
+
+    </head>
+    <body>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+        <div id="container"></div>
+        <script id="tmpl" type="text/x-template">
+            <div id="wrapper" class="wrapper">
+                <div class="inner">
+                    <img src="../../lib/wembley.jpg" alt="wembley stadium" />
+                </div>
+            </div>
+        </script>
+        <script src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
+        <script src="pavlov.js"></script>
+        <script>
+            pavlov.specify('Velocitr', function(){
+
+                describe('velocitr', function(){
+
+                    it('should find Velocitr global', function(){
+                        assert(Velocitr).isNotNull();
+                    });
+                    it('should initialise a new instance', function(){
+                        var v = new Velocitr();
+                        assert(v.velocity).equals(0);
+                    });
+                    it('should cap the velocity', function(){
+                        var v = new Velocitr();
+                        v.set(30);
+                        assert(v.velocity).equals(30);
+                        v.set(100);
+                        assert(v.velocity).equals(40);
+                        v.set(-100);
+                        assert(v.velocity).equals(-40);
+                    });
+                    it('should decelerate the velocity', function(){
+                        var v = new Velocitr();
+                        v.set(30);
+                        v.decelerate();
+                        assert(v.velocity).equals(30*0.9);
+                    });
+                    it('should be able to set initial value', function(){
+                        var v = new Velocitr();
+                        v.move(30, true);
+                        assert(v.velocity).equals(0);
+                    });
+                    it('should create positive velocity when moved forward', function(){
+                        var v = new Velocitr();
+                        v.move(30);
+                        assert(v.velocity).equals(30);
+                        v.move(-30, true);
+                        v.move(-10);
+                        assert(v.velocity).equals(20);
+                    });
+                    it('should create negative velocity when moved backward', function(){
+                        var v = new Velocitr();
+                        v.move(-30);
+                        assert(v.velocity).equals(-30);
+                        v.move(-60);
+                        assert(v.velocity).equals(-30);
+                        v.move(-80);
+                        assert(v.velocity).equals(-20);
+                        v.move(60, true);
+                        v.move(30);
+                        assert(v.velocity).equals(-30);
+                    });
+
+                });
+
+
+            });
+        </script>
+    </body>
+</html>
